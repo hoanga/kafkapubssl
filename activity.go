@@ -137,7 +137,7 @@ func initParms(a *KafkaPubActivity, context activity.Context, params *KafkaParms
 		flogoLogger.Debugf("Kafkapub SASL parms initialized; user [%v]  password[########]", user)
 		producerkey += user.(string)
 	}
-	if reqSsl := context.GetInput("requiressl"); reqSsl != nil && reqSsl.(string) != "" {
+	if reqSsl := context.GetInput("requiressl"); reqSsl != nil && reqSsl.(bool) {
 		params.kafkaConfig.Net.TLS.Enable = true
 	}
 	a.Lock()
